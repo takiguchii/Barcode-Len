@@ -1,4 +1,3 @@
-
 const resultadoDiv = document.getElementById("resultado");
 
 Quagga.init({
@@ -7,11 +6,11 @@ Quagga.init({
     type: "LiveStream",
     target: document.querySelector("#camera"),
     constraints: {
-      facingMode: "environment", // câmera traseira em celular
+      facingMode: "environment", 
     },
   },
   decoder: {
-    readers: ["ean_reader", "code_128_reader", "upc_reader"] // pode adicionar mais se quiser
+    readers: ["ean_reader", "code_128_reader", "upc_reader"]
   },
 }, function (err) {
   if (err) {
@@ -26,6 +25,9 @@ Quagga.onDetected(function (data) {
   const codigo = data.codeResult.code;
   resultadoDiv.innerText = "✅ Código lido: " + codigo;
 
-  // Parar após leitura bem-sucedida (opcional)
-  Quagga.stop();
+  Quagga.stop(); // desliga a camera 
+
+  // abre a detahes.html para mostrar as informações 
+  window.location.href = `assents/Pages/detalhes.html?codigo=${codigo}`;
+
 });

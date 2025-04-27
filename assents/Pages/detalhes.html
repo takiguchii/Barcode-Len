@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalhes do Produto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📦 Detalhes do Produto</h1>
+  <div id="info-produto">
+    ⌛ Buscando informações...
+  </div>
+
+  <!-- Botão para voltar ao index-->
+  <button>
+    <a href="../..//index.html">Voltar para a Página Inicial</a>
+  </button>
+
+  <script>
+    // Capturando o codiigo da barra de pequisa
+    const urlParams = new URLSearchParams(window.location.search);
+    const codigo = urlParams.get('codigo');
+
+    if (codigo) {
+      document.getElementById('info-produto').innerText = `Código de Barras: ${codigo}`;
+      //chamar a api
+    } else {
+      document.getElementById('info-produto').innerText = "❌ Nenhum código recebido.";
+    }
+  </script>
+</body>
+</html>
